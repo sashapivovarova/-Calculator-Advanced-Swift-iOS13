@@ -21,6 +21,16 @@ class ViewController: UIViewController {
         guard let number = Double(displayLabel.text!) else {
             fatalError("Cannot conver display label text to a Double.")
         }
+        
+        if let calMethod = sender.currentTitle {
+            if calMethod == "+/-" {
+                displayLabel.text = String(number * -1)
+            } else if calMethod == "AC" {
+                displayLabel.text = "0"
+            } else if calMethod == "%" {
+                displayLabel.text = String (number * 0.01)
+            }
+        }
     }
     
     @IBAction func numButtonPressed(_ sender: UIButton) {
