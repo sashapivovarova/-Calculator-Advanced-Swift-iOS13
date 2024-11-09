@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         isFinishedTypingNumber = true
         
         guard let number = Double(displayLabel.text!) else {
-            fatalError("Cannot conver display label text to a Double.")
+            fatalError("Cannot convert display label text to a Double.")
         }
         
         if let calMethod = sender.currentTitle {
@@ -41,6 +41,19 @@ class ViewController: UIViewController {
                 displayLabel.text = numValue
                 isFinishedTypingNumber = false
             } else {
+                
+                if numValue == "." {
+                    guard let currentDisplayValue = Double(displayLabel.text!) else {
+                        fatalError("Cannot convert display label text to a Double.")
+                    }
+                    
+                    let isInt = floor(currentDisplayValue) == currentDisplayValue
+                    
+                    if !isInt {
+                        return
+                    }
+                }
+                
                 displayLabel.text = displayLabel.text! + numValue
             }
         }
