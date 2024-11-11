@@ -18,6 +18,9 @@ class ViewController: UIViewController {
             }
             return number
         }
+        set {
+            displayLabel.text = String(newValue)
+        }
     }
     
     @IBOutlet weak var displayLabel: UILabel!
@@ -29,11 +32,11 @@ class ViewController: UIViewController {
         
         if let calMethod = sender.currentTitle {
             if calMethod == "+/-" {
-                displayLabel.text = String(displayValue * -1)
+                displayValue *= -1
             } else if calMethod == "AC" {
                 displayLabel.text = "0"
             } else if calMethod == "%" {
-                displayLabel.text = String (displayValue * 0.01)
+                displayValue *= 0.01
             }
         }
     }
