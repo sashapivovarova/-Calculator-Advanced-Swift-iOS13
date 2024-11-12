@@ -31,14 +31,8 @@ class ViewController: UIViewController {
         isFinishedTypingNumber = true
         
         if let calMethod = sender.currentTitle {
-            if calMethod == "+/-" {
-                displayValue *= -1
-            } else if calMethod == "AC" {
-                displayLabel.text = "0"
-            } else if calMethod == "%" {
-                displayValue *= 0.01
-            }
         }
+        
     }
     
     @IBAction func numButtonPressed(_ sender: UIButton) {
