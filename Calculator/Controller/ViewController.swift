@@ -10,7 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var displayLabel: UILabel!
+    
     private var isFinishedTypingNumber: Bool = true
+    
     private var displayValue: Double {
         get {
             guard let number = Double(displayLabel.text!) else {
@@ -23,15 +26,17 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var displayLabel: UILabel!
+    private var calculator = CalculatorLogic()
     
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         
         //What should happen when a non-number button is pressed
         isFinishedTypingNumber = true
         
+        calculator.setNumber(displayValue)
+        
         if let calMethod = sender.currentTitle {
-            let calculator = CalculatorLogic(number: displayValue)
+            
             guard let result = calculator.calculate(symbol: calMethod) else {
                 fatalError("This result of the calculation is nil.")
             }
